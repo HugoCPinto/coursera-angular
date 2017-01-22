@@ -10,16 +10,21 @@ function LunchCheckController($scope) {
 
   function checkEmptyDishes(listDishes) {
     var i;
+    var emptyDish = false;
     for (i = 0; i < listDishes.length; i++){
       if(listDishes[i] == ""){
-        return true;
+        listDishes.splice(i,1);
+        emptyDish = true;
       }
     }
-    return false;
+
+    return emptyDish;
   }
 
   $scope.checkTooMuch = function () {
     var comma = ',';
+
+    $scope.checkEmptyDishesInput = "";
 
     if($scope.listDishes == null || $scope.listDishes == ""){
       $scope.checkMessage = "Please enter data first";
@@ -29,9 +34,7 @@ function LunchCheckController($scope) {
       var listDishes = $scope.listDishes.split(comma);
 
       if (checkEmptyDishes(listDishes)){
-        $scope.checkEmptyDishesInput = "NOT consider empty item!";
-      }else{
-        $scope.checkEmptyDishesInput = "";
+        $scope.checkEmptyDishesInput = "(NOT consider empty dish!)";
       }
 
       if (listDishes.length <= 3) {
