@@ -57,6 +57,10 @@ function ShoppingListCheckOffService() {
     {
       itemName: "Chocolate",
       itemQuantity: "5"
+    },
+    {
+      itemName: "Banana",
+      itemQuantity: "5"
     }
   ];
 
